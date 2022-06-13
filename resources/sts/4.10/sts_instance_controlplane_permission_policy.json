@@ -20,7 +20,6 @@
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
                 "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
                 "elasticloadbalancing:CreateListener",
-                "elasticloadbalancing:CreateLoadBalancer",
                 "elasticloadbalancing:CreateLoadBalancerPolicy",
                 "elasticloadbalancing:CreateLoadBalancerListeners",
                 "elasticloadbalancing:CreateTargetGroup",
@@ -44,6 +43,18 @@
                 "kms:DescribeKey"
             ],
             "Resource": "*"
+        },
+        {
+          "Action": [
+            "elasticloadbalancing:CreateLoadBalancer"
+          ],
+          "Effect": "Allow",
+          "Resource": "*",
+          "Condition": {
+            "StringEquals": {
+              "aws:RequestTag/red-hat-managed": "true"
+            }
+          }
         }
     ]
 }

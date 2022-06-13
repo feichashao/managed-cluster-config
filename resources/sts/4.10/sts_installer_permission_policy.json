@@ -89,7 +89,6 @@
                 "elasticloadbalancing:AttachLoadBalancerToSubnets",
                 "elasticloadbalancing:ConfigureHealthCheck",
                 "elasticloadbalancing:CreateListener",
-                "elasticloadbalancing:CreateLoadBalancer",
                 "elasticloadbalancing:CreateLoadBalancerListeners",
                 "elasticloadbalancing:CreateTargetGroup",
                 "elasticloadbalancing:DeleteLoadBalancer",
@@ -186,6 +185,18 @@
                 "cloudwatch:GetMetricData"
             ],
             "Resource": "*"
+        },
+        {
+          "Action": [
+            "elasticloadbalancing:CreateLoadBalancer"
+          ],
+          "Effect": "Allow",
+          "Resource": "*",
+          "Condition": {
+            "StringEquals": {
+              "aws:RequestTag/red-hat-managed": "true"
+            }
+          }
         }
     ]
 }
